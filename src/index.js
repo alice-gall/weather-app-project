@@ -8,6 +8,7 @@ function displayWeather(response) {
   let windSpeed = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#current-time");
   let date = new Date(response.data.time * 1000);
+  let weatherIcon = document.querySelector("#weather-icon");
 
   currentTemperatureValue.innerHTML = temperature;
   cityTitleElement.innerHTML = city;
@@ -15,6 +16,13 @@ function displayWeather(response) {
   weatherHumidity.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeed.innerHTML = `${response.data.wind.speed}km/h`;
   timeElement.innerHTML = formatDate(date);
+  weatherIcon.innerHTML = `<img
+                src="${response.data.condition.icon_url}
+                "
+                ,
+                
+                class="weather-icon"
+            />`;
 }
 
 function formatDate(date) {
