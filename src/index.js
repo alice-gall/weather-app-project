@@ -1,10 +1,44 @@
 function displayWeather(response) {
   let currentTemperatureValue = document.querySelector("#temperature-value");
   let temperature = Math.round(response.data.temperature.current);
-  currentTemperatureValue.innerHTML = temperature;
   let cityTitleElement = document.querySelector("h1");
   let city = response.data.city;
+  let weatherDescription = document.querySelector("#description");
+  let weatherHumidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind-speed");
+  let timeElement = document.querySelector("#current-time");
+  let date = new Date(response.data.time * 1000);
+
+  currentTemperatureValue.innerHTML = temperature;
   cityTitleElement.innerHTML = city;
+  weatherDescription.innerHTML = response.data.condition.description;
+  weatherHumidity.innerHTML = `${response.data.temperature.humidity}%`;
+  windSpeed.innerHTML = `${response.data.wind.speed}km/h`;
+  timeElement.innerHTML = formatDate(date);
+}
+
+function formatDate(date) {
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  return `${day} ${hour}:${minutes}`;
 }
 
 function searchCityWeather(city) {
@@ -25,25 +59,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
 searchCityWeather("Valletta");
-
-let time = new Date();
-
-function displayTime(date) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[date.getDay()];
-  let hour = date.getHours();
-  let minutes = date.getMinutes();
-
-  return `${day} ${hour}:${minutes}`;
-}
-
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = displayTime(time);
