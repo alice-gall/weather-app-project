@@ -25,3 +25,25 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
 searchCityWeather("Valletta");
+
+let time = new Date();
+
+function displayTime(date) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+
+  return `${day} ${hour}:${minutes}`;
+}
+
+let currentTime = document.querySelector("#current-time");
+currentTime.innerHTML = displayTime(time);
