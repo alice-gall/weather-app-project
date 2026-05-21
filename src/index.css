@@ -8,3 +8,25 @@ body {
   padding: 30px;
   border-radius: 10px;
 }
+#header {
+  border-bottom: 1px solid #f9f7fe;
+  padding-bottom: 30px;
+}
+
+#search-bar {
+  padding: 15px;
+  width: 80%;
+  background: #f9f7fe;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+#submit-button {
+  padding: 15px 30px;
+  border: none;
+  background: #885df1;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-left: 5px;
+}
