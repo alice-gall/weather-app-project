@@ -7,15 +7,18 @@ function displayWeather(response) {
   cityTitleElement.innerHTML = city;
 }
 
+function searchCityWeather(city) {
+  let apiKey = "d043896d344020fed4co182b1f4a0tb8";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+
+  axios.get(apiUrl).then(displayWeather);
+}
+
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-bar");
 
-  let apiKey = "d043896d344020fed4co182b1f4a0tb8";
-  let cityTitle = searchInput.value;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityTitle}&key=${apiKey}`;
-
-  axios.get(apiUrl).then(displayWeather);
+  searchCityWeather(searchInput.value);
 }
 
 let searchForm = document.querySelector("#search-form");
