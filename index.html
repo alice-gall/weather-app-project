@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="src/index.css" />
     <title>Weather App</title>
   </head>
@@ -10,20 +16,33 @@
     <div id="page">
       <header id="header">
         <form>
-          <input type="search" placeholder="Enter a city..." id="search-bar" />
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            id="search-bar"
+            required
+            autofocus
+          />
           <input type="submit" value="Search" id="submit-button" />
         </form>
       </header>
       <main>
-        <div>
-          <h1>San Fransisco</h1>
-          <p>
-            Tuesday 14:49, scattered clouds<br />Humidity: <strong>66%</strong>,
-            Wind: <strong>3.13km/h</strong>
-          </p>
+        <div id="current-weather-display">
+          <div>
+            <h1>San Fransisco</h1>
+            <p class="weather-description">
+              Tuesday 14:49, scattered clouds<br />Humidity:
+              <strong>66%</strong>, Wind: <strong>3.13km/h</strong>
+            </p>
+          </div>
+          <div>
+            <span id="weather-icon">⛅️</span>
+            <span id="temperature-value">12</span>
+            <span id="temperature-unit">°C</span>
+          </div>
         </div>
-        <div>⛅️12°C</div>
       </main>
+
       <footer>
         This project was coded by <a href="#" target="_blank">Alice Gall</a> and
         is <a href="#" target="_blank">open-sourced on GitHub</a> and
