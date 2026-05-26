@@ -23,6 +23,8 @@ function displayWeather(response) {
                 
                 class="weather-icon"
             />`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -51,9 +53,16 @@ function formatDate(date) {
 
 function searchCityWeather(city) {
   let apiKey = "d043896d344020fed4co182b1f4a0tb8";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayWeather);
+}
+
+function getForecast(city) {
+  let apiKey = "d043896d344020fed4co182b1f4a0tb8";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function search(event) {
@@ -66,9 +75,9 @@ function search(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-searchCityWeather("Valletta");
+function displayForecast(response) {
+  console.log(response.data);
 
-function displayForecast() {
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
@@ -91,4 +100,4 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHtml;
 }
 
-displayForecast();
+searchCityWeather("Valletta");
